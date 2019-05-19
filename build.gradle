@@ -1,13 +1,39 @@
-plugins {
-	id 'org.springframework.boot' version '2.1.4.BUILD-SNAPSHOT'
-	id 'java'
+buildscript {
+	ext {
+		springBootVersion = '1.5.19.BUILD-SNAPSHOT'
+	}
+	repositories {
+		jcenter()
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+		maven { url 'http://repo.spring.io/plugins-release' }
+		maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
+		classpath 'org.springframework:springloaded:1.2.6.RELEASE'
+		classpath 'mysql:mysql-connector-java:5.1.46'
+	}
 }
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-maven'
+apply plugin: 'propdeps-idea'
+apply plugin: 'propdeps-eclipse'
 
 apply plugin: 'io.spring.dependency-management'
 
 group = 'portal'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
 
 repositories {
 	mavenCentral()
@@ -16,11 +42,12 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile('org.springframework:spring-jdbc')
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compile 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 
 	runtime('com.microsoft.sqlserver:mssql-jdbc')
 	compile 'org.flywaydb:flyway-core'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

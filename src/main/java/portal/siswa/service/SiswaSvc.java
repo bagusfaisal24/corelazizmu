@@ -1,4 +1,8 @@
 package portal.siswa.service;
 
-public class SiswaSvc {
+import portal.siswa.model.SiswaModel;
+
+public interface SiswaSvc {
+
+    Iterable<SiswaModel> findAll();
 }
