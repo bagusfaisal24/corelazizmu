@@ -11,7 +11,7 @@ public class SiswaSvcImpl implements SiswaSvc {
     private SiswaRepositories siswaRepo;
 
     @Autowired
-    public void setDI(SiswaRepositories siswaRepo) {
+    public void setSiswaRepo(SiswaRepositories siswaRepo) {
         this.siswaRepo = siswaRepo;
     }
 

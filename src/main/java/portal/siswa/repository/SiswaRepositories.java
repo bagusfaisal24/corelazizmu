@@ -10,4 +10,6 @@ import portal.siswa.model.SiswaModel;
 @Transactional
 public interface SiswaRepositories extends SoftDeletesRepository<SiswaModel, Long> {
 
+    @Query(value = "SELECT * from siswa", nativeQuery = true)
+    Iterable<SiswaModel> getAll();
 }
