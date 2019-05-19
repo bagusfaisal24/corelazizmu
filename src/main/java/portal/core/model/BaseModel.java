@@ -1,4 +1,4 @@
-package com.example.portal.core.model;
+package portal.core.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,8 +14,8 @@ import javax.persistence.PreUpdate;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-import static com.example.tron.util.DateTimePreferences.ASIA_JAKARTA;
-import static com.example.tron.util.DateTimePreferences.RFC_3339;
+import static portal.util.DateTimePreferences.ASIA_JAKARTA;
+import static portal.util.DateTimePreferences.RFC_3339;
 
 @NoArgsConstructor
 @MappedSuperclass

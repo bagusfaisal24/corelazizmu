@@ -1,6 +1,6 @@
-package com.example.portal.siswa.model;
+package portal.siswa.model;
 
-import com.example.portal.core.model.BaseModel;
+import portal.core.model.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
 
