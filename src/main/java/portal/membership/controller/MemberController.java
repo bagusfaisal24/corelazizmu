@@ -1,19 +1,21 @@
-package portal.member.controller;
+package portal.membership.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import portal.core.exception.ValidationErrorException;
-import portal.member.form.MemberForm;
-import portal.member.model.MemberModel;
-import portal.member.service.MemberSvc;
+import portal.membership.form.MemberForm;
+import portal.membership.model.MemberModel;
+import portal.membership.service.MemberSvc;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
-@RequestMapping("/v1/member")
+@RequestMapping("/v1/membership/member")
 public class MemberController {
 
     private static final Logger log = LoggerFactory.getLogger(MemberController.class);
@@ -27,16 +29,21 @@ public class MemberController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public Iterable<MemberModel> getAll() {
-        return memberSvc.findAll();
+    public List<MemberModel> getAll() {
+        return (List<MemberModel>) memberSvc.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public MemberModel getAll(@Valid @RequestBody MemberForm form, BindingResult bindingResult) {
-
+    @ResponseStatus(HttpStatus.CREATED)
+    public MemberModel createNew(@Valid @RequestBody MemberForm form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) throw new ValidationErrorException(bindingResult.getAllErrors());
-        MemberModel member = new MemberModel();
-        return member;
+        return memberSvc.createNew(form);
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public MemberModel getDetail(@PathVariable Long id) {
+        return memberSvc.getDetail(id);
     }
 }

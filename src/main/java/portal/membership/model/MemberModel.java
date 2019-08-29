@@ -1,11 +1,10 @@
-package portal.member.model;
+package portal.membership.model;
 
 import portal.core.model.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 @Entity

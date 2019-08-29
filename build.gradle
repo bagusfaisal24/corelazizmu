@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.5.19.BUILD-SNAPSHOT'
+		springBootVersion = '1.5.21.RELEASE'
 	}
 	repositories {
 		jcenter()
@@ -14,7 +14,7 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
 		classpath 'org.springframework:springloaded:1.2.6.RELEASE'
-		classpath "mysql:mysql-connector-java:5.1.17"
+		classpath "mysql:mysql-connector-java:8.0.15"
 	}
 }
 
@@ -30,9 +30,10 @@ apply plugin: 'propdeps-eclipse'
 
 apply plugin: 'io.spring.dependency-management'
 
-group = 'portal'
-version = '0.0.1-SNAPSHOT'
+group = 'lazizmu'
+version = '0.0.1'
 sourceCompatibility = '1.8'
+targetCompatibility = 1.8
 
 
 repositories {
@@ -45,8 +46,11 @@ dependencies {
 	compile('org.springframework:spring-jdbc')
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compile 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
+	compile('javax.interceptor:javax.interceptor-api:1.2')
 
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'mysql:mysql-connector-java'
+	
 	compile 'org.flywaydb:flyway-core'
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

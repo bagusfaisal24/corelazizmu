@@ -1,10 +1,10 @@
-package portal.member.repository;
+package portal.membership.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import portal.core.repository.SoftDeletesRepository;
-import portal.member.model.MemberModel;
+import portal.membership.model.MemberModel;
 
 @Repository
 @Transactional
