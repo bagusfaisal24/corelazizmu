@@ -14,6 +14,7 @@
 2. Create database zakat
 3. Pull the latest source code from repository
 4. Setting user for database and flyway migration on application.yml
+5. Make Sure Project success build before push code
 
 ## How to run?
 ```

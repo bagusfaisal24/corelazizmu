@@ -1,0 +1,30 @@
+app:
+  name: "Sistem Pengelolaan Zakat"
+  origin: "http://localhost:3000"
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/zakat"
+    username: "root"
+    password: ""
+    driverClassName: com.mysql.jdbc.Driver
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    port: 5672
+  http:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+flyway:
+  enabled: true
+  baselineOnMigrate: true
+  url: jdbc:mysql://localhost:3306/zakat
+  user: root
+  password:
+  validateOnMigrate: false
+server:
+  port: 8080
+sendgrid:
+  api:
+    key: "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"

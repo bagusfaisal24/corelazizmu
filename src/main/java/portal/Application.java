@@ -7,10 +7,10 @@ import portal.util.CustomJpaRepositoryFactoryBean;
 
 @SpringBootApplication
 @EnableJpaRepositories(repositoryFactoryBeanClass = CustomJpaRepositoryFactoryBean.class)
-public class PortalApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PortalApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

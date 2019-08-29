@@ -14,7 +14,7 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
 		classpath 'org.springframework:springloaded:1.2.6.RELEASE'
-		classpath 'mysql:mysql-connector-java:5.1.46'
+		classpath "mysql:mysql-connector-java:5.1.17"
 	}
 }
 
@@ -47,7 +47,6 @@ dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 
-	runtime('com.microsoft.sqlserver:mssql-jdbc')
 	compile 'org.flywaydb:flyway-core'
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
