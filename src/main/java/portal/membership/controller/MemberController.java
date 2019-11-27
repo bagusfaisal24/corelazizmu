@@ -46,4 +46,9 @@ public class MemberController {
     public MemberModel getDetail(@PathVariable Long id) {
         return memberSvc.getDetail(id);
     }
+
+    @RequestMapping(value = "/index")
+    public String index(){
+        return "index c";
+    }
 }

@@ -46,6 +46,8 @@ dependencies {
 	compile('org.springframework:spring-jdbc')
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compile 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.thymeleaf.thymeleaf:3.0.9.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
 	compile('javax.interceptor:javax.interceptor-api:1.2')
 
 	compileOnly 'org.projectlombok:lombok'
