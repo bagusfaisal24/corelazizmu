@@ -49,10 +49,24 @@ dependencies {
 	compile 'org.thymeleaf.thymeleaf:3.0.9.RELEASE'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
 	compile('javax.interceptor:javax.interceptor-api:1.2')
+	compile("org.springframework.boot:spring-boot-starter-security")
+	compile("org.springframework.security.oauth:spring-security-oauth2")
+	compile 'org.flywaydb:flyway-core'
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+	testCompile('org.springframework.security:spring-security-test')
+
+
+
+	// mock
+	testCompile('com.github.fridujo:rabbitmq-mock:1.0.8')
+
+	// http client
+	compile("io.github.openfeign:feign-core:9.3.1")
+	compile("io.github.openfeign:feign-gson:9.4.0")
+	compile("io.github.openfeign:feign-jackson:9.4.0")
+	compile("io.github.openfeign:feign-slf4j:9.4.0")
+	compile('com.squareup.okhttp:okhttp:2.5.0')
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
-	
-	compile 'org.flywaydb:flyway-core'
-	testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
