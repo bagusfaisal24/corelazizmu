@@ -22,13 +22,12 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     private final AuthenticationManager authenticationManager;
-//    private final UserDetailsService userDetails;
+    private final UserDetailsService userDetails;
 
     @Autowired
-    public OAuth2AuthorizationServerConfig(AuthenticationManager authManager) {
+    public OAuth2AuthorizationServerConfig(AuthenticationManager authManager, @Qualifier("userDetailsService") UserDetailsService userDetails) {
         this.authenticationManager = authManager;
-//        this.userDetails = userDetails;
-//        @Qualifier("userDetailsService") UserDetailsService userDetails
+        this.userDetails = userDetails;
     }
 
     @Override
@@ -46,14 +45,14 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
                 .accessTokenValiditySeconds(86400);
     }
 
-//    @Override
-//    public void configure(final AuthorizationServerEndpointsConfigurer endpoints) {
-//        endpoints
-//                .userDetailsService(userDetails)
-//                .tokenStore(tokenStore())
-//                .tokenEnhancer(jwtTokenEnhancer())
-//                .authenticationManager(authenticationManager);
-//    }
+    @Override
+    public void configure(final AuthorizationServerEndpointsConfigurer endpoints) {
+        endpoints
+                .userDetailsService(userDetails)
+                .tokenStore(tokenStore())
+                .tokenEnhancer(jwtTokenEnhancer())
+                .authenticationManager(authenticationManager);
+    }
 
     @Bean
     @Primary

@@ -14,7 +14,6 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/v1/auth/**").permitAll();
-        http.authorizeRequests().antMatchers("/v1/simulasi/**").permitAll();
         http.authorizeRequests().antMatchers("/v1/**").authenticated();
         http.authorizeRequests().anyRequest().permitAll();
         http.csrf().disable();
