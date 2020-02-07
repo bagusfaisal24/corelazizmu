@@ -1,4 +1,4 @@
-package portal.user;
+package portal.user.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,9 +18,8 @@ public class UserModel extends BaseModel {
     @Getter
     private Long id;
 
-
     @Column(name = "username", nullable = false)
-    private String name;
+    private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
@@ -29,5 +28,11 @@ public class UserModel extends BaseModel {
 
     @Column(name = "full_name", nullable = false)
     private String fullName;
+
+    private boolean enable;
+
+    @Column(name = "user_role", nullable = false)
+    private String userRole;
+
 
 }

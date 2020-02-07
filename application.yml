@@ -25,6 +25,4 @@ flyway:
   validateOnMigrate: false
 server:
   port: 8080
-sendgrid:
-  api:
-    key: "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"
+
