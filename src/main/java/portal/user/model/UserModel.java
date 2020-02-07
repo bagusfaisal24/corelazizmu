@@ -33,10 +33,10 @@ public class UserModel extends BaseModel implements UserDetails {
     @Column(name = "full_name")
     private String fullName;
 
-    private boolean enable;
+    private boolean enabled;
 
     @Column(name = "user_role", nullable = false)
-    private String userRole;
+    private String role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -45,21 +45,16 @@ public class UserModel extends BaseModel implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

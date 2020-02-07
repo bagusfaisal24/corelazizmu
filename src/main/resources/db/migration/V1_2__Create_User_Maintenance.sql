@@ -8,9 +8,9 @@ CREATE TABLE  app_user (
     password VARCHAR(255) NOT NULL,
     email VARCHAR (255),
     full_name VARCHAR (255),
-    enable bit default 0,
+    enabled bit default 0,
     user_role VARCHAR(255) NOT NULL
 );
- INSERT INTO app_user (CREATED_AT, CREATED_BY, USERNAME, PASSWORD, ENABLE, USER_ROLE)
+ INSERT INTO app_user (CREATED_AT, CREATED_BY, USERNAME, PASSWORD, ENABLED, USER_ROLE)
   VALUES
     (CURRENT_TIMESTAMP, 0, 'admin', '$2a$10$bPg7pTQem6QJ8Q/IgJ1YvuhchqjdcnYurj.hl4WDaj8VzCfo5qHr2', 1, 'SUPERUSER');
