@@ -25,4 +25,3 @@ flyway:
   validateOnMigrate: false
 server:
   port: 8080
-
