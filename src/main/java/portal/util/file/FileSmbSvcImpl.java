@@ -1,6 +1,7 @@
 package portal.util.file;
 
 import jcifs.smb1.smb1.NtlmPasswordAuthentication;
+import jcifs.smb1.smb1.SmbException;
 import jcifs.smb1.smb1.SmbFile;
 import jcifs.smb1.smb1.SmbFileOutputStream;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,18 @@ public class FileSmbSvcImpl implements FileSmbSvc {
     }
 
     @Override
+    public boolean isExist(SmbFile sFile) throws SmbException {
+        if (!sFile.exists()) {
+            sFile.mkdirs();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public SmbFile getaAthentication(String filePath, String username, String password, String domain) throws MalformedURLException {
         NtlmPasswordAuthentication authentication = new NtlmPasswordAuthentication(domain, username, password);
         return new SmbFile(filePath, authentication);
     }
+
 }

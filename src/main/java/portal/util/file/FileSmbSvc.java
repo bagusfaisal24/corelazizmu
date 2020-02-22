@@ -12,4 +12,7 @@ public interface FileSmbSvc {
     byte[] read(SmbFile smbFile) throws IOException;
 
     SmbFile getaAthentication(String filePath, String username, String password, String domain) throws MalformedURLException;
+
+    boolean isExist(SmbFile sFile) throws IOException;
+
 }

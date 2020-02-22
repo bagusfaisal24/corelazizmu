@@ -1,6 +1,10 @@
 app:
   name: "Sistem Pengelolaan Zakat"
   origin: "http://localhost:3000"
+  smb:
+    location: "smb://localhost:8080/share-folder-example"
+    username: "root"
+    password: "root"
 spring:
   datasource:
     url: "jdbc:mysql://localhost:3306/zakat"
