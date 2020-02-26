@@ -9,24 +9,23 @@ import org.springframework.web.multipart.MultipartFile;
 import portal.util.file.FileSmbSvc;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 @Service
 public class DocumentSvc {
 
-    @Value("${app.smb.location:}")
+    @Value("${app.ops.location:}")
     @Setter
     private String location;
 
-    @Value("${app.smb.domain:}")
+    @Value("${app.ops.domain:}")
     @Setter
     private String domain;
 
-    @Value("${app.smb.username:}")
+    @Value("${app.ops.username:}")
     @Setter
     private String username;
 
-    @Value("${app.smb.password:}")
+    @Value("${app.ops.password:}")
     @Setter
     private String password;
 
