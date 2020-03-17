@@ -48,7 +48,9 @@ public class MemberController {
         return memberSvc.getDetail(id);
     }
 
-    @RequestMapping(value = "/v1/membership/member/{id}")
+    @RequestMapping(value = "{id}/update", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
     public MemberModel update(@RequestBody MemberForm form,
                               @PathVariable Long id) {
         return memberSvc.update(id, form);
