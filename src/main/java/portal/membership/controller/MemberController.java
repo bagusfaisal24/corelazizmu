@@ -18,6 +18,7 @@ import java.util.List;
 @RequestMapping("/v1/membership/member")
 public class MemberController {
 
+    @SuppressWarnings("unused")
     private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 
     private final MemberSvc memberSvc;
@@ -47,8 +48,9 @@ public class MemberController {
         return memberSvc.getDetail(id);
     }
 
-    @RequestMapping(value = "/index")
-    public String index(){
-        return "index c";
+    @RequestMapping(value = "/v1/membership/member/{id}")
+    public MemberModel update(@RequestBody MemberForm form,
+                              @PathVariable Long id) {
+        return memberSvc.update(id, form);
     }
 }

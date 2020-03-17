@@ -40,4 +40,14 @@ public class MemberSvcImpl implements MemberSvc {
     public MemberModel getDetail(Long id) {
         return memberRepositories.findOne(id);
     }
+
+    @Override
+    public MemberModel update(Long id, MemberForm form) {
+        MemberModel member = getDetail(id);
+        member.setName(form.getName());
+        member.setBirthDate(transactionDate.getStartOfDay(form.getBirthDate()));
+        member.setDobPlace(form.getDobPlace());
+        member.setJob(form.getJob());
+        return memberRepositories.save(member);
+    }
 }
