@@ -1,5 +1,5 @@
 # Sistem Pengelolaan Zakat
-
+ Base project REST API Sistem Pengelolaan Zakat menggunakan java spring boot
 ## Tools
 - Intelij IDEA
 - Data Grip
@@ -35,3 +35,6 @@ gradlew.bat build
 6. Writing Test(s)
 7. Writing Exception
 8. Writing Validator
+
+## How to cek running aps OK
+http://localhost:8080/
