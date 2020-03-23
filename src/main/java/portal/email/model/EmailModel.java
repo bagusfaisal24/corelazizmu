@@ -38,10 +38,10 @@ public class EmailModel extends BaseModel {
     @Column(name = "EMAIL_TO_NAME")
     private String emailToName;
 
-    @Column(name = "TYPE", nullable = false)
+    @Column(name = "TYPE")
     private String type;
 
-    @Column(name = "REQUESTED_AT", nullable = false)
+    @Column(name = "REQUESTED_AT")
     private Timestamp requestedAt;
 }
 
