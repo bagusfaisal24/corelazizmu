@@ -14,7 +14,7 @@ bin/
 ansible-playbook*.retry
 .vagrant/
 ansible-playbook.yml
-application.yml
+/application.yml
 deploy.sh
 dss.service
 ./application.properties
