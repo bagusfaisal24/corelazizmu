@@ -22,11 +22,14 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     private final AuthenticationManager authenticationManager;
+    private final TokenStore tokenStore;
     private final UserDetailsService userDetails;
 
     @Autowired
-    public OAuth2AuthorizationServerConfig(AuthenticationManager authManager, @Qualifier("userDetailsService") UserDetailsService userDetails) {
+    public OAuth2AuthorizationServerConfig(AuthenticationManager authManager, TokenStore tokenStore,
+                                           @Qualifier("userDetailsService") UserDetailsService userDetails) {
         this.authenticationManager = authManager;
+        this.tokenStore = tokenStore;
         this.userDetails = userDetails;
     }
 
@@ -49,8 +52,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     public void configure(final AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints
                 .userDetailsService(userDetails)
-                .tokenStore(tokenStore())
-                .tokenEnhancer(jwtTokenEnhancer())
+                .tokenStore(this.tokenStore)
                 .authenticationManager(authenticationManager);
     }
 
@@ -58,22 +60,22 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Primary
     public DefaultTokenServices tokenServices() {
         final DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-        defaultTokenServices.setTokenStore(tokenStore());
+        defaultTokenServices.setTokenStore(this.tokenStore);
         defaultTokenServices.setSupportRefreshToken(true);
         return defaultTokenServices;
     }
 
-    @Bean
-    public TokenStore tokenStore() {
-        return new JwtTokenStore(jwtTokenEnhancer());
-    }
-
-    @Bean
-    protected JwtAccessTokenConverter jwtTokenEnhancer() {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("123");
-        return converter;
-    }
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new JwtTokenStore(jwtTokenEnhancer());
+//    }
+//
+//    @Bean
+//    protected JwtAccessTokenConverter jwtTokenEnhancer() {
+//        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+//        converter.setSigningKey("123");
+//        return converter;
+//    }
 
 }
 

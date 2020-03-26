@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import portal.core.model.OkResponse;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -27,10 +28,13 @@ public class TokenController {
     @Resource(name = "tokenStore")
     private TokenStore tokenStore;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/oauth/token/revokeById/{tokenId}")
+    @RequestMapping(method = RequestMethod.POST, value = "/revoke/access-token/{tokenId}")
     @ResponseBody
-    public void revokeToken(HttpServletRequest request, @PathVariable String tokenId) {
-        tokenServices.revokeToken(tokenId);
+    public OkResponse revokeToken(@PathVariable String tokenId) {
+        if (tokenStore instanceof JdbcTokenStore) {
+            ((JdbcTokenStore) tokenStore).removeAccessToken(tokenId);
+        }
+        return new OkResponse();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/tokens")
@@ -46,13 +50,13 @@ public class TokenController {
         return tokenValues;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/tokens/revokeRefreshToken/{tokenId:.*}")
+    @RequestMapping(method = RequestMethod.POST, value = "/revoke/refresh-token/{tokenId}")
     @ResponseBody
-    public String revokeRefreshToken(@PathVariable String tokenId) {
+    public OkResponse revokeRefreshToken(@PathVariable String tokenId) {
         if (tokenStore instanceof JdbcTokenStore) {
             ((JdbcTokenStore) tokenStore).removeRefreshToken(tokenId);
         }
-        return tokenId;
+        return new OkResponse();
     }
 
 }
