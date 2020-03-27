@@ -14,9 +14,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
-
 @Configuration
 @EnableAuthorizationServer
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -64,18 +61,5 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
         defaultTokenServices.setSupportRefreshToken(true);
         return defaultTokenServices;
     }
-
-//    @Bean
-//    public TokenStore tokenStore() {
-//        return new JwtTokenStore(jwtTokenEnhancer());
-//    }
-//
-//    @Bean
-//    protected JwtAccessTokenConverter jwtTokenEnhancer() {
-//        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-//        converter.setSigningKey("123");
-//        return converter;
-//    }
-
 }
 
