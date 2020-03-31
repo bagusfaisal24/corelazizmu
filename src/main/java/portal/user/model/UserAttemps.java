@@ -23,7 +23,7 @@ public class UserAttemps extends BaseModel {
     private String username;
 
     @Column(name = "attemps", nullable = false)
-    private String attemps;
+    private int attemps;
 
     @Column(name = "last_modified")
     private Timestamp lastModified;

@@ -5,6 +5,6 @@ CREATE TABLE  user_attemps (
                            updated_at timestamp NULL,
                            deleted_at timestamp NULL,
                            username VARCHAR(255) NOT NULL,
-                           attemps VARCHAR(255) NOT NULL,
+                           attemps INT NOT NULL,
                            last_modified timestamp NULL
 );
