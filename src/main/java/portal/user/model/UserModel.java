@@ -38,6 +38,15 @@ public class UserModel extends BaseModel implements UserDetails {
     @Column(name = "user_role", nullable = false)
     private String role;
 
+    @Column(name = "account_non_expired", nullable = false)
+    private boolean isAccountNonExpired;
+
+    @Column(name = "account_non_locked", nullable = false)
+    private boolean isAccountNonLocked;
+
+    @Column(name = "credentials_non_expired", nullable = false)
+    private boolean isCredentialsNonExpired;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -45,16 +54,16 @@ public class UserModel extends BaseModel implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return isAccountNonExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return isAccountNonLocked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return isCredentialsNonExpired;
     }
 }
