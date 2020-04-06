@@ -46,6 +46,10 @@ public class UserAttempsSvcImp implements UserAttempsSvc {
         userAttemps.setUsername(username);
         userAttemps.setAttemps(userAttemps.getAttemps() + 1);
         userAttemps.setLastModified(transactionDate.now());
+        return save(userAttemps);
+    }
+
+    public UserAttemps save(UserAttemps userAttemps) {
         return userAttempsRepository.save(userAttemps);
     }
 }
