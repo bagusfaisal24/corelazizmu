@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public interface UserRepository extends SoftDeletesRepository<UserModel, Long> {
 
-    @Query(value = "SELECT * FROM app_user WHERE deleted_at IS NULL AND username = ?1", nativeQuery = true)
     UserModel findOneByUsername(String username);
 
     @Query(value = "SELECT * FROM app_user WHERE deleted_at IS NULL AND user_role = ?1", nativeQuery = true)
