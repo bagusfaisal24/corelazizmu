@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class UserModel extends BaseModel implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
     @Getter
     private Long id;

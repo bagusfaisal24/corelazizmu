@@ -7,10 +7,10 @@ app:
     password: "root"
 spring:
   datasource:
-    url: "jdbc:mysql://localhost:3306/zakat"
-    username: "root"
-    password: ""
-    driverClassName: com.mysql.jdbc.Driver
+    url: "jdbc:postgresql://localhost:5432/zakat"
+    username: "admin"
+    password: "123"
+    driverClassName: org.postgresql.Driver
   rabbitmq:
     host: localhost
     username: guest
@@ -23,9 +23,9 @@ spring:
 flyway:
   enabled: true
   baselineOnMigrate: true
-  url: jdbc:mysql://localhost:3306/zakat
-  user: root
-  password:
+  url: jdbc:postgresql://localhost:5432/zakat
+  user: admin
+  password: 123
   validateOnMigrate: false
 server:
   port: 8080
