@@ -3,14 +3,14 @@
 ## Tools
 - Intelij IDEA
 - Data Grip
-- MySQL
+- PostgreSQL
 - JDK 8, Java 1.8.x
 
 ### Plugin Intelij IDEA
 - Lombok Annotation
 
 ## Step to Setting Up
-1. Create user for MySQL database
+1. Create user for PostGreSQL database
 2. Create database zakat
 3. Pull the latest source code from repository
 4. Setting user for database and flyway migration on application.yml
