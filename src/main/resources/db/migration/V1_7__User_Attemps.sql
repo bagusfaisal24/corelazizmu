@@ -1,5 +1,5 @@
 CREATE TABLE  user_attemps (
-                           id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                           id SERIAL PRIMARY KEY NOT NULL,
                            created_at timestamp NOT NULL,
                            created_by BIGINT NOT NULL,
                            updated_at timestamp NULL,
