@@ -10,4 +10,6 @@ public interface UserAttempsSvc {
 
     UserAttemps getUserAttemps(String username);
 
+    UserAttemps save(UserAttemps userAttemps);
+
 }
