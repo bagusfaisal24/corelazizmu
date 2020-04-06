@@ -1,5 +1,5 @@
 CREATE TABLE oauth_access_token (
-                                    authentication_id varchar(255) NOT NULL PRIMARY KEY,
+                                    id SERIAL PRIMARY KEY NOT NULL,
                                     token_id varchar(255) NOT NULL,
                                     token BYTEA  NOT NULL,
                                     user_name varchar(255) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE oauth_access_token (
 );
 
 CREATE TABLE oauth_refresh_token (
-                                     token_id varchar(255) NOT NULL,
+                                     id SERIAL PRIMARY KEY NOT NULL,
                                      token BYTEA  NOT NULL,
                                      authentication BYTEA  NOT NULL
 );

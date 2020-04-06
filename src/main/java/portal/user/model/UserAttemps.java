@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 public class UserAttemps extends BaseModel {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
     @Getter
     private Long id;
