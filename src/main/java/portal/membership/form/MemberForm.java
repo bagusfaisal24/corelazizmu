@@ -29,4 +29,8 @@ public class MemberForm {
     @NotNull
     private String job;
 
+    private String nbm;
+
+    private Long rantingId;
+
 }

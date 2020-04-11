@@ -3,6 +3,7 @@ package portal.membership.model;
 import portal.core.model.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
+import portal.ranting.model.RantingModel;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -16,6 +17,9 @@ public class MemberModel extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    private RantingModel ranting;
 
     @Column(name = "NAME", nullable = false)
     private String name;

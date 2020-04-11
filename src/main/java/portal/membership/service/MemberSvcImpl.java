@@ -2,9 +2,12 @@ package portal.membership.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import portal.core.exception.DataNotFoundException;
 import portal.membership.form.MemberForm;
 import portal.membership.model.MemberModel;
 import portal.membership.repository.MemberRepositories;
+import portal.ranting.model.RantingModel;
+import portal.ranting.service.RantingSvc;
 import portal.util.TransactionDate;
 
 import java.time.LocalDate;
@@ -13,11 +16,14 @@ import java.time.LocalDate;
 public class MemberSvcImpl implements MemberSvc {
 
     private MemberRepositories memberRepositories;
+    private RantingSvc rantingSvc;
     private TransactionDate transactionDate;
 
     @Autowired
-    public MemberSvcImpl(MemberRepositories memberRepositories, TransactionDate transactionDate) {
+    public MemberSvcImpl(MemberRepositories memberRepositories, RantingSvc rantingSvc,
+                         TransactionDate transactionDate) {
         this.memberRepositories = memberRepositories;
+        this.rantingSvc = rantingSvc;
         this.transactionDate = transactionDate;
     }
 
@@ -28,11 +34,15 @@ public class MemberSvcImpl implements MemberSvc {
 
     @Override
     public MemberModel createNew(MemberForm form) {
+        RantingModel ranting = rantingSvc.findOne(form.getRantingId());
+        if (ranting == null) throw new DataNotFoundException("data ranting tidak ada");
+
         MemberModel member = new MemberModel();
         member.setName(form.getName());
         member.setBirthDate(transactionDate.getStartOfDay(form.getBirthDate()));
         member.setDobPlace(form.getDobPlace());
         member.setJob(form.getJob());
+        member.setRanting(ranting);
         return memberRepositories.save(member);
     }
 
@@ -43,11 +53,15 @@ public class MemberSvcImpl implements MemberSvc {
 
     @Override
     public MemberModel update(Long id, MemberForm form) {
+        RantingModel ranting = rantingSvc.findOne(form.getRantingId());
+        if (ranting == null) throw new DataNotFoundException("data ranting tidak ada");
         MemberModel member = getDetail(id);
         member.setName(form.getName());
         member.setBirthDate(transactionDate.getStartOfDay(form.getBirthDate()));
         member.setDobPlace(form.getDobPlace());
         member.setJob(form.getJob());
+        member.setNbm(form.getNbm());
+        member.setRanting(ranting);
         return memberRepositories.save(member);
     }
 }
