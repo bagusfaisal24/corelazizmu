@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -77,13 +78,13 @@ public class LimitLoginAuthenticationProvider implements AuthenticationProvider 
             return new UsernamePasswordAuthenticationToken(
                     name, password, new ArrayList<>());
         } else if (!user.isAccountNonLocked()) {
-            throw new InvalidActionException("anda melakukan kesalahan sebanyak " + attemps + "x akun telah terkunci");
+            throw new LockedException("anda melakukan kesalahan sebanyak " + attemps + "x akun telah terkunci");
         } else {
             UserAttemps userAttemps = userAttempsSvc.updateUserAttemps(name);
             if (userAttemps.getAttemps() == attemps) {
                 userAttempsSvc.updateLocked(name);
             }
-            throw new InvalidActionException("username atau kata sandi tidak sesuai");
+            throw new BadCredentialsException("username atau kata sandi tidak sesuai");
         }
     }
 
