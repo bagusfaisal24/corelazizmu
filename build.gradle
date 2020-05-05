@@ -58,7 +58,7 @@ dependencies {
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	testCompile('org.springframework.security:spring-security-test')
 	compile('org.postgresql:postgresql:42.2.0')
-
+	compile('de.olivergierke.moduliths:moduliths-core:1.0.0-SNAPSHOT')
 	// mock
 	testCompile('com.github.fridujo:rabbitmq-mock:1.0.8')
 
@@ -68,7 +68,7 @@ dependencies {
 	compile("io.github.openfeign:feign-jackson:9.4.0")
 	compile("io.github.openfeign:feign-slf4j:9.4.0")
 	compile('com.squareup.okhttp:okhttp:2.5.0')
-
+	compile('de.olivergierke.moduliths:moduliths-test:1.0.0-SNAPSHOT')
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 }
