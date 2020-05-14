@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import portal.core.exception.DataNotFoundException;
 import portal.core.exception.ValidationErrorException;
 import portal.master.form.ProgramKerjaForm;
 import portal.master.model.ProgramKerjaModel;
@@ -43,6 +44,7 @@ public class ProgramKerjaController {
     public ProgramKerjaModel update(@RequestBody ProgramKerjaForm form,
                                     @PathVariable Long id) {
         ProgramKerjaModel programKerja = programKerjaSvc.getSingle(id);
+        if (programKerja == null) throw new DataNotFoundException("data tidak ditemukan");
         return programKerjaSvc.update(programKerja, form);
     }
 }
