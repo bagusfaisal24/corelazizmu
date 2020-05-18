@@ -11,7 +11,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
-import portal.core.exception.InvalidActionException;
 import portal.user.model.UserAttemps;
 import portal.user.model.UserModel;
 import portal.user.repository.UserRepository;
