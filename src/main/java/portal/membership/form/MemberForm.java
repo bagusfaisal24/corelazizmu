@@ -11,24 +11,26 @@ import portal.util.LocalDateSerializer;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+import static portal.util.message_error.MessageErrorConst.DATA_TIDAK_BOLEH_KOSONG;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MemberForm {
-
-    @NotNull
+    
+    @NotNull(message = DATA_TIDAK_BOLEH_KOSONG)
     private String name;
 
     private String dobPlace;
-
-    @NotNull
+    
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthDate;
-
-    @NotNull
+    
+    @NotNull(message = DATA_TIDAK_BOLEH_KOSONG)
     private String job;
-
+    
+    @NotNull(message = DATA_TIDAK_BOLEH_KOSONG)
     private String nbm;
 
     private Long rantingId;
