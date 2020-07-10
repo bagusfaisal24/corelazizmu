@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import portal.util.LocalDateDeserializer;
 import portal.util.LocalDateSerializer;
@@ -17,7 +18,7 @@ import static portal.util.message_error.MessageErrorConst.DATA_TIDAK_BOLEH_KOSON
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MemberForm {
     
-    @NotNull(message = DATA_TIDAK_BOLEH_KOSONG)
+    @NotEmpty(message = DATA_TIDAK_BOLEH_KOSONG)
     private String name;
 
     private String dobPlace;
@@ -27,10 +28,10 @@ public class MemberForm {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthDate;
     
-    @NotNull(message = DATA_TIDAK_BOLEH_KOSONG)
+    @NotEmpty(message = DATA_TIDAK_BOLEH_KOSONG)
     private String job;
     
-    @NotNull(message = DATA_TIDAK_BOLEH_KOSONG)
+    @NotEmpty(message = DATA_TIDAK_BOLEH_KOSONG)
     private String nbm;
 
     private Long rantingId;
