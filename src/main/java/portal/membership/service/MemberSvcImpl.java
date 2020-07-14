@@ -29,7 +29,7 @@ public class MemberSvcImpl implements MemberSvc {
 	
 	@Override
 	public Iterable<MemberModel> findAll() {
-		return memberRepositories.findAll();
+		return memberRepositories.getAll();
 	}
 	
 	@Override

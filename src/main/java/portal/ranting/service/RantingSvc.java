@@ -19,7 +19,7 @@ public class RantingSvc {
     }
 
     public List<RantingModel> getAllRanting() {
-        return (List<RantingModel>) rantingRepository.findAll();
+        return (List<RantingModel>) rantingRepository.getAll();
     }
 
     public RantingModel findOne(Long id) {
