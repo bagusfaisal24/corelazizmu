@@ -10,6 +10,6 @@ import portal.membership.model.MemberModel;
 @Transactional
 public interface MemberRepositories extends SoftDeletesRepository<MemberModel, Long> {
 
-    @Query(value = "SELECT * from member order by created_at asc ", nativeQuery = true)
+    @Query(value = "SELECT * from member where deleted_at is null order by created_at asc", nativeQuery = true)
     Iterable<MemberModel> getAll();
 }

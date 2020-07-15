@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import portal.core.exception.ValidationErrorException;
+import portal.core.model.OkResponse;
 import portal.membership.form.MemberForm;
 import portal.membership.model.MemberModel;
 import portal.membership.service.MemberSvc;
@@ -55,5 +56,13 @@ public class MemberController {
 							  @PathVariable Long id, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) throw new ValidationErrorException(bindingResult.getAllErrors());
 		return memberSvc.update(id, form);
+	}
+	
+	@RequestMapping(value = "{id}/delete", method = RequestMethod.DELETE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public OkResponse delete(@PathVariable Long id) {
+		memberSvc.delete(id);
+		return new OkResponse();
 	}
 }

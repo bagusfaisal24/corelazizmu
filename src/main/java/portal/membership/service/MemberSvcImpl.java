@@ -63,4 +63,12 @@ public class MemberSvcImpl implements MemberSvc {
 		MemberModel member = getDetail(id);
 		return setMember(form, ranting, member);
 	}
+	
+	@Override
+	public void delete(Long id) {
+		MemberModel member = getDetail(id);
+		if (member == null) throw new DataNotFoundException("member tidak ditemukan");
+		member.setDeletedAt(transactionDate.now());
+		memberRepositories.save(member);
+	}
 }

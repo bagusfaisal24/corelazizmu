@@ -11,6 +11,6 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface RantingRepository extends SoftDeletesRepository<RantingModel, Long> {
-	@Query(value = "SELECT * from ranting order by created_at asc ", nativeQuery = true)
+	@Query(value = "SELECT * from ranting where deleted_at is null order by created_at asc ", nativeQuery = true)
 	Iterable<RantingModel> getAll();
 }

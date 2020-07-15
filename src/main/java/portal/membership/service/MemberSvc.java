@@ -11,6 +11,8 @@ public interface MemberSvc {
     MemberModel createNew(MemberForm form);
 
     MemberModel getDetail(Long id);
-
+    
     MemberModel update(Long id, MemberForm form);
+    
+    void delete(Long id);
 }
