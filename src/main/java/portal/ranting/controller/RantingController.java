@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import portal.core.exception.ValidationErrorException;
+import portal.core.model.OkResponse;
 import portal.ranting.form.RantingForm;
 import portal.ranting.model.RantingModel;
 import portal.ranting.service.RantingSvc;
@@ -50,5 +51,12 @@ public class RantingController {
     public RantingModel update(@PathVariable Long id, @Valid @RequestBody RantingForm form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) throw new ValidationErrorException(bindingResult.getAllErrors());
         return rantingSvc.update(id, form);
+    }
+    
+    @RequestMapping(value = "{id}/delete", method = RequestMethod.DELETE)
+    @ResponseBody
+    public OkResponse delete (@PathVariable Long id){
+        rantingSvc.delete(id);
+        return new OkResponse();
     }
 }

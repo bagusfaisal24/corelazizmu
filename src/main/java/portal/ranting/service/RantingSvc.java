@@ -2,9 +2,11 @@ package portal.ranting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import portal.core.exception.DataNotFoundException;
 import portal.ranting.form.RantingForm;
 import portal.ranting.model.RantingModel;
 import portal.ranting.repository.RantingRepository;
+import portal.util.TransactionDate;
 
 import java.util.List;
 
@@ -12,10 +14,13 @@ import java.util.List;
 public class RantingSvc {
 
     private final RantingRepository rantingRepository;
+    private final TransactionDate transactionDate;
 
     @Autowired
-    public RantingSvc(RantingRepository rantingRepository) {
+    public RantingSvc(RantingRepository rantingRepository,
+                      TransactionDate transactionDate) {
         this.rantingRepository = rantingRepository;
+        this.transactionDate = transactionDate;
     }
 
     public List<RantingModel> getAllRanting() {
@@ -42,5 +47,12 @@ public class RantingSvc {
 
     public RantingModel save(RantingModel ranting) {
         return rantingRepository.save(ranting);
+    }
+    
+    public void delete (Long id) {
+        RantingModel ranting = findOne(id);
+        if (ranting == null)throw new DataNotFoundException("data tidak ditemukan");
+        ranting.setDeletedAt(transactionDate.now());
+        save(ranting);
     }
 }
