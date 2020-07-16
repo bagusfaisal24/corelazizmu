@@ -10,7 +10,6 @@ import portal.ranting.model.RantingModel;
 import portal.ranting.service.RantingSvc;
 import portal.util.TransactionDate;
 
-import java.time.LocalDate;
 
 @Service
 public class MemberSvcImpl implements MemberSvc {

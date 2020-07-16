@@ -16,4 +16,8 @@ public class ProductTypeSvc {
     public List<ProductTypeModel> getAll() {
         return (List<ProductTypeModel>) productTypeRepo.findAll();
     }
+    
+    public ProductTypeModel findOne(Long id){
+        return productTypeRepo.findOne(id);
+    }
 }
