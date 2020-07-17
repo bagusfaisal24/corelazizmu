@@ -16,8 +16,10 @@ import java.time.LocalDate;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ZakatForm {
 	
+	@NotNull (message = MessageErrorConst.DATA_TIDAK_BOLEH_KOSONG)
 	private Long memberId;
 	
+	@NotNull (message = MessageErrorConst.DATA_TIDAK_BOLEH_KOSONG)
 	private Long productTypeId;
 	
 	@JsonDeserialize(using = LocalDateDeserializer.class)
@@ -27,7 +29,5 @@ public class ZakatForm {
 	
 	@NotNull (message = MessageErrorConst.DATA_TIDAK_BOLEH_KOSONG)
 	private Double amount;
-	
-	private String keterangan;
 	
 }

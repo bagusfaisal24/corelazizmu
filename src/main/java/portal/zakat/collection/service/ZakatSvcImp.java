@@ -44,7 +44,6 @@ public class ZakatSvcImp implements ZakatSvc {
 		zakat.setProductType(productType);
 		zakat.setSubmitDate(transactionDate.getStartOfDay(form.getSubmitDate()));
 		zakat.setAmount(form.getAmount());
-		zakat.setKeterangan(form.getKeterangan());
 		return save(zakat);
 	}
 	

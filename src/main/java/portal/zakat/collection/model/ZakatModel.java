@@ -31,7 +31,4 @@ public class ZakatModel extends BaseModel {
 	
 	@Column(name = "SUBMIT_DATE", nullable = false)
 	private Timestamp submitDate;
-	
-	@Column(name = "KETERANGAN")
-	private String keterangan;
 }
